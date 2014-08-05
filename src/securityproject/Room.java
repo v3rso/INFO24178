@@ -24,16 +24,16 @@ public class Room {
     
     public void print(){
         String str = "";
-        String bound = "+";
+        String bound = "+ ";
         for (int i = 0; i < size; i++) {
-            bound += "-";
-            str += "|";
+            bound += "- ";
+            str += "| ";
             for (int j = 0; j < size; j++) {
-                str += cells[i][j] == 0 ? " " : "0";
+                str += cells[i][j] == 0 ? "  " : "0 ";
             }
             str += "|\n"; 
         }
-        bound += "+\n";
+        bound += "+ \n";
         System.out.printf("%s%s%s", bound, str, bound);
     }
     
@@ -51,6 +51,11 @@ public class Room {
             sensor.apply(this);
         }
     }
+    
+    public int getSensorCount(){
+        return sensors.size();
+    }
+    
     public double getCoverage (){
         int counter = 0;
         for (int i = 0; i < size; i++) {

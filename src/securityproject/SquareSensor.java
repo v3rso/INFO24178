@@ -16,11 +16,11 @@ public class SquareSensor implements Sensor{
     public int size;
 
     public SquareSensor(Scanner scanner) {
-        System.out.println("Enter x:");
+        System.out.println("Enter the X coordinate:");
         this.x = scanner.nextInt();
-        System.out.println("y:");
+        System.out.println("Enter the Y coordinate:");
         this.y = scanner.nextInt();
-        System.out.println("size:");
+        System.out.println("Enter the size of the sensor:");
         this.size = scanner.nextInt();
     }
     

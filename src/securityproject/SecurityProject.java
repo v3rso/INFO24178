@@ -17,28 +17,46 @@ public class SecurityProject {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter room size");
+        System.out.println("Welcome to the security sensor simulator.\n");
+        System.out.println("Enter your desired room size: ");
         int roomSize = scanner.nextInt();
         Room room = new Room(roomSize);
         loop: while(true){
-            System.out.println("Enter kind of sensor (square/vertical/horizontal) or request coverage: ");
+            System.out.println("Choose an action from the options below.\n\n"
+                    + "1. Create square sensor.\n"
+                    + "2. Create horizontal sensor.\n"
+                    + "3. Create vertical sensor.\n"
+                    + "4. Display current sensor map.\n"
+                    + "5. Calculate sensor coverage.\n"
+                    + "6. Begin sensor simulation.\n"
+                    + "7. Exit.\n\n");
             String input = scanner.next();
             switch (input){
-                case "square":
+                case "1":
                     room.addSensor(new SquareSensor(scanner));
                     break;
-                case "horizontal":
+                case "2":
                     room.addSensor(new HorizontalSensor(scanner));
                     break;
-                case "vertical":
+                case "3":
                     room.addSensor(new VerticalSensor(scanner));
                     break;
-                default:
+                case "4":
+                    room.print();
+                    break;
+                case "5":
                     System.out.printf("The coverage is %f\n", room.getCoverage()*100);
-                    break loop;
+                    break;
+                case "6":
+                    Logger logger = new Logger();
+                    logger.startSim(room);
+                    break;
+                case "7":
+                    System.exit(0);
+                default:
+                    System.out.println("That was not an acceptable input, try again.");
             }
             room.applySensors();
-            room.print();
         }
     }
 }
